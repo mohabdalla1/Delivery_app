@@ -97,7 +97,7 @@ class AdminDashboardScreen extends StatelessWidget {
             DrawerHeader(
               decoration: const BoxDecoration(color: Colors.deepOrange),
               child: Column(
-                crossAxisAlignment: CrossAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(Icons.local_shipping, size: 48, color: Colors.white),
