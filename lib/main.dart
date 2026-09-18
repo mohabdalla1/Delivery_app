@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
+import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 
 void main() {
   runApp(const DeliveryApp());
@@ -66,7 +67,16 @@ class AdminDashboardScreen extends StatelessWidget {
                 );
               },
             ),
-            const ListTile(leading: Icon(Icons.pedal_bike), title: Text('السائقين')),
+            ListTile(
+              leading: const Icon(Icons.pedal_bike),
+              title: const Text('السائقين'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DriversPage()),
+                );
+              },
+            ),
             const ListTile(leading: Icon(Icons.receipt_long), title: Text('الطلبات')),
             const ListTile(leading: Icon(Icons.people), title: Text('العملاء')),
           ],
