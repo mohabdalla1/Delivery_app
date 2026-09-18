@@ -60,7 +60,7 @@ class DriverHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Online/Offline Status Switch Card
             Card(
@@ -80,7 +80,7 @@ class DriverHomePage extends StatelessWidget {
                     const SizedBox(width: 16),
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             driverProvider.isOnline ? tr.translate('online_status') : tr.translate('offline_status'),
@@ -164,7 +164,7 @@ class DriverHomePage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
-                    crossAxisAlignment: CrossAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Simulated Interactive Map Container
                       Container(
@@ -215,7 +215,7 @@ class DriverHomePage extends StatelessWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment: CrossAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('${tr.translate('pickup_from')}: ${activeJob.storeName}', style: const TextStyle(fontWeight: FontWeight.bold)),
                                 Text(activeJob.storeAddress, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
@@ -235,7 +235,7 @@ class DriverHomePage extends StatelessWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment: CrossAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('${tr.translate('deliver_to_customer')}: ${activeJob.customerName}', style: const TextStyle(fontWeight: FontWeight.bold)),
                                 Text(activeJob.customerAddress, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
@@ -311,7 +311,7 @@ class DriverHomePage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
-                          crossAxisAlignment: CrossAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
