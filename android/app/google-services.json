@@ -1,0 +1,30 @@
+{
+      "project_info": {
+          "project_number": "423562415264",
+              "project_id": "delivery-app-37bbd",
+                  "storage_bucket": "delivery-app-37bbd.firebasestorage.app"
+                    },
+                      "client": [
+                          {
+                                "client_info": {
+                                        "mobilesdk_app_id": "1:423562415264:android:481c9eecf9581880a18dc5",
+                                                "android_client_info": {
+                                                          "package_name": "com.tekno.delevary"
+                                                                  }
+                                                                        },
+                                                                              "oauth_client": [],
+                                                                                    "api_key": [
+                                                                                            {
+                                                                                                      "current_key": "AIzaSyA9at93AOoRN4RM1ZRwH8IbDRcoC5NotQ4"
+                                                                                                              }
+                                                                                                                    ],
+                                                                                                                          "services": {
+                                                                                                                                  "appinvite_service": {
+                                                                                                                                            "other_platform_oauth_client": []
+                                                                                                                                                    }
+                                                                                                                                                          }
+                                                                                                                                                              }
+                                                                                                                                                                ],
+                                                                                                                                                                  "configuration_version": "1"
+                                                                                                                                                                  }
+}
