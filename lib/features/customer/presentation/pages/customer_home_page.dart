@@ -27,7 +27,7 @@ class CustomerHomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               tr.translate('deliver_to'),
@@ -115,7 +115,7 @@ class CustomerHomePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
-                        crossAxisAlignment: CrossAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
@@ -241,7 +241,7 @@ class CustomerHomePage extends StatelessWidget {
                         ],
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             height: 80,
@@ -254,7 +254,7 @@ class CustomerHomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
-                              crossAxisAlignment: CrossAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   store.name,
@@ -314,7 +314,7 @@ class CustomerHomePage extends StatelessWidget {
                         ],
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: Container(
@@ -328,7 +328,7 @@ class CustomerHomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
-                              crossAxisAlignment: CrossAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   product.name,
