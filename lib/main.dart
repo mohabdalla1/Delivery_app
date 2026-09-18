@@ -6,6 +6,7 @@ import 'package:delivery_app/features/auth/presentation/pages/role_selection_pag
 import 'package:delivery_app/features/customer/presentation/providers/customer_home_provider.dart';
 import 'package:delivery_app/features/customer/presentation/providers/cart_provider.dart';
 import 'package:delivery_app/features/merchant/presentation/providers/merchant_provider.dart';
+import 'package:delivery_app/features/driver/presentation/providers/driver_provider.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
@@ -20,6 +21,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => CustomerHomeProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => MerchantProvider()),
+        ChangeNotifierProvider(create: (_) => DriverProvider()),
       ],
       child: const DeliveryApp(),
     ),

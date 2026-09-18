@@ -3,6 +3,7 @@ import 'package:delivery_app/core/localization/app_localizations.dart';
 import 'package:delivery_app/features/auth/presentation/pages/role_selection_page.dart';
 import 'package:delivery_app/features/customer/presentation/pages/customer_home_page.dart';
 import 'package:delivery_app/features/merchant/presentation/pages/merchant_home_page.dart';
+import 'package:delivery_app/features/driver/presentation/pages/driver_home_page.dart';
 import 'package:delivery_app/main.dart';
 
 class LoginPage extends StatefulWidget {
@@ -64,12 +65,11 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(builder: (context) => const MerchantHomePage()),
         (route) => false,
       );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${AppLocalizations.of(context).translate('login_title')}: ${_getRoleTitle(AppLocalizations.of(context))}'),
-          backgroundColor: _getRoleColor(),
-        ),
+    } else if (widget.selectedRole == UserRole.driver) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const DriverHomePage()),
+        (route) => false,
       );
     }
   }
