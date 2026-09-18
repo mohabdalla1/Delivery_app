@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:delivery_app/core/localization/app_localizations.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/customers_page.dart';
+
+final ValueNotifier<Locale> appLocaleNotifier = ValueNotifier(const Locale('ar'));
 
 void main() {
   runApp(const DeliveryApp());
@@ -13,14 +17,31 @@ class DeliveryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'لوحة التحكم - تطبيق التوصيل',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        useMaterial3: true,
-      ),
-      home: const AdminDashboardScreen(),
+    return ValueListenableBuilder<Locale>(
+      valueListenable: appLocaleNotifier,
+      builder: (context, currentLocale, child) {
+        return MaterialApp(
+          title: 'Delivery Admin',
+          debugShowCheckedModeBanner: false,
+          locale: currentLocale,
+          supportedLocales: const [
+            Locale('ar'),
+            Locale('en'),
+          ],
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+            useMaterial3: true,
+            fontFamily: currentLocale.languageCode == 'ar' ? 'Tajawal' : 'Roboto',
+          ),
+          home: const AdminDashboardScreen(),
+        );
+      },
     );
   }
 }
@@ -30,11 +51,24 @@ class AdminDashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tr = AppLocalizations.of(context);
+    final isArabic = appLocaleNotifier.value.languageCode == 'ar';
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('لوحة تحكم المنصة'),
+        title: Text(tr.translate('dashboard_title')),
         centerTitle: true,
         actions: [
+          TextButton.icon(
+            icon: const Icon(Icons.language, color: Colors.deepOrange),
+            label: Text(
+              tr.translate('switch_lang'),
+              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.deepOrange),
+            ),
+            onPressed: () {
+              appLocaleNotifier.value = isArabic ? const Locale('en') : const Locale('ar');
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {},
@@ -45,66 +79,56 @@ class AdminDashboardScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.deepOrange),
+            DrawerHeader(
+              decoration: const BoxDecoration(color: Colors.deepOrange),
               child: Column(
                 crossAxisAlignment: CrossAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.local_shipping, size: 48, color: Colors.white),
-                  SizedBox(height: 8),
-                  Text('نظام إدارة التوصيل',
-                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                  const Icon(Icons.local_shipping, size: 48, color: Colors.white),
+                  const SizedBox(height: 8),
+                  Text(
+                    tr.translate('system_name'),
+                    style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
             ListTile(
               leading: const Icon(Icons.dashboard),
-              title: const Text('الرئيسية'),
+              title: Text(tr.translate('home')),
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
               leading: const Icon(Icons.store),
-              title: const Text('المتاجر والتجار'),
+              title: Text(tr.translate('merchants')),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MerchantsPage()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MerchantsPage()));
               },
             ),
             ListTile(
               leading: const Icon(Icons.pedal_bike),
-              title: const Text('السائقين'),
+              title: Text(tr.translate('drivers')),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DriversPage()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const DriversPage()));
               },
             ),
             ListTile(
               leading: const Icon(Icons.receipt_long),
-              title: const Text('الطلبات'),
+              title: Text(tr.translate('orders')),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const OrdersPage()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const OrdersPage()));
               },
             ),
             ListTile(
               leading: const Icon(Icons.people),
-              title: const Text('العملاء'),
+              title: Text(tr.translate('customers')),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CustomersPage()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const CustomersPage()));
               },
             ),
           ],
@@ -116,11 +140,11 @@ class AdminDashboardScreen extends StatelessWidget {
           crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
-          children: const [
-            _StatCard(title: 'إجمالي الطلبات', value: '1,240', icon: Icons.shopping_bag, color: Colors.blue),
-            _StatCard(title: 'المتاجر النشطة', value: '85', icon: Icons.store, color: Colors.green),
-            _StatCard(title: 'السائقين المتاحين', value: '42', icon: Icons.directions_bike, color: Colors.orange),
-            _StatCard(title: 'إجمالي المبيعات', value: '\$15,400', icon: Icons.attach_money, color: Colors.purple),
+          children: [
+            _StatCard(title: tr.translate('total_orders'), value: '1,240', icon: Icons.shopping_bag, color: Colors.blue),
+            _StatCard(title: tr.translate('active_merchants'), value: '85', icon: Icons.store, color: Colors.green),
+            _StatCard(title: tr.translate('available_drivers'), value: '42', icon: Icons.directions_bike, color: Colors.orange),
+            _StatCard(title: tr.translate('total_sales'), value: '\$15,400', icon: Icons.attach_money, color: Colors.purple),
           ],
         ),
       ),
