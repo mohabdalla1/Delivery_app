@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:delivery_app/core/localization/app_localizations.dart';
+import 'package:delivery_app/features/auth/presentation/pages/role_selection_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
@@ -21,7 +22,7 @@ class DeliveryApp extends StatelessWidget {
       valueListenable: appLocaleNotifier,
       builder: (context, currentLocale, child) {
         return MaterialApp(
-          title: 'Delivery Admin',
+          title: 'Delivery App',
           debugShowCheckedModeBanner: false,
           locale: currentLocale,
           supportedLocales: const [
@@ -37,9 +38,8 @@ class DeliveryApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
             useMaterial3: true,
-            fontFamily: currentLocale.languageCode == 'ar' ? 'Tajawal' : 'Roboto',
           ),
-          home: const AdminDashboardScreen(),
+          home: const RoleSelectionPage(),
         );
       },
     );
@@ -129,6 +129,18 @@ class AdminDashboardScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const CustomersPage()));
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('تسجيل الخروج', style: TextStyle(color: Colors.red)),
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RoleSelectionPage()),
+                  (route) => false,
+                );
               },
             ),
           ],
