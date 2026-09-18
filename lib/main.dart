@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:delivery_app/core/localization/app_localizations.dart';
 import 'package:delivery_app/features/auth/presentation/pages/role_selection_page.dart';
 import 'package:delivery_app/features/customer/presentation/providers/customer_home_provider.dart';
-import 'package:delivery_app/features/customer/presentation/pages/customer_home_page.dart';
+import 'package:delivery_app/features/customer/presentation/providers/cart_provider.dart';
+import 'package:delivery_app/features/merchant/presentation/providers/merchant_provider.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
@@ -17,6 +18,8 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CustomerHomeProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => MerchantProvider()),
       ],
       child: const DeliveryApp(),
     ),
