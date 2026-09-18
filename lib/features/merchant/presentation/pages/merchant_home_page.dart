@@ -193,7 +193,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
           SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Column(
-              crossAxisAlignment: CrossAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Store Open / Close Status Card
                 Card(
@@ -214,7 +214,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
                         const SizedBox(width: 16),
                         Expanded(
                           child: Column(
-                            crossAxisAlignment: CrossAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 tr.translate('store_status'),
@@ -302,7 +302,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
-                          crossAxisAlignment: CrossAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -401,7 +401,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
                     ),
                     title: Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold)),
                     subtitle: Column(
-                      crossAxisAlignment: CrossAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 4),
                         Text('${product.price} ${tr.translate('currency')} • ${product.category}'),
