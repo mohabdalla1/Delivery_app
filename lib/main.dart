@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
+import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
+import 'package:delivery_app/features/admin/presentation/pages/customers_page.dart';
 
 void main() {
   runApp(const DeliveryApp());
@@ -56,11 +58,16 @@ class AdminDashboardScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const ListTile(leading: Icon(Icons.dashboard), title: Text('الرئيسية')),
+            ListTile(
+              leading: const Icon(Icons.dashboard),
+              title: const Text('الرئيسية'),
+              onTap: () => Navigator.pop(context),
+            ),
             ListTile(
               leading: const Icon(Icons.store),
               title: const Text('المتاجر والتجار'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MerchantsPage()),
@@ -71,14 +78,35 @@ class AdminDashboardScreen extends StatelessWidget {
               leading: const Icon(Icons.pedal_bike),
               title: const Text('السائقين'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const DriversPage()),
                 );
               },
             ),
-            const ListTile(leading: Icon(Icons.receipt_long), title: Text('الطلبات')),
-            const ListTile(leading: Icon(Icons.people), title: Text('العملاء')),
+            ListTile(
+              leading: const Icon(Icons.receipt_long),
+              title: const Text('الطلبات'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const OrdersPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.people),
+              title: const Text('العملاء'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CustomersPage()),
+                );
+              },
+            ),
           ],
         ),
       ),
