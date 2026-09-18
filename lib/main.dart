@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:delivery_app/core/localization/app_localizations.dart';
 import 'package:delivery_app/features/auth/presentation/pages/role_selection_page.dart';
+import 'package:delivery_app/features/customer/presentation/providers/customer_home_provider.dart';
+import 'package:delivery_app/features/customer/presentation/pages/customer_home_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/merchants_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/drivers_page.dart';
 import 'package:delivery_app/features/admin/presentation/pages/orders_page.dart';
@@ -10,7 +13,14 @@ import 'package:delivery_app/features/admin/presentation/pages/customers_page.da
 final ValueNotifier<Locale> appLocaleNotifier = ValueNotifier(const Locale('ar'));
 
 void main() {
-  runApp(const DeliveryApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CustomerHomeProvider()),
+      ],
+      child: const DeliveryApp(),
+    ),
+  );
 }
 
 class DeliveryApp extends StatelessWidget {

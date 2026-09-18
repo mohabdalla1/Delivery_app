@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:delivery_app/core/localization/app_localizations.dart';
 import 'package:delivery_app/features/auth/presentation/pages/role_selection_page.dart';
+import 'package:delivery_app/features/customer/presentation/pages/customer_home_page.dart';
 import 'package:delivery_app/main.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,6 +49,12 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const AdminDashboardScreen()),
+        (route) => false,
+      );
+    } else if (widget.selectedRole == UserRole.customer) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const CustomerHomePage()),
         (route) => false,
       );
     } else {
