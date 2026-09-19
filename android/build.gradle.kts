@@ -22,3 +22,9 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+plugins {
+        id("com.android.application")
+            id("kotlin-android")
+                id("com.google.gms.google-services") // تأكد من وجود هذا السطر
+}
+
