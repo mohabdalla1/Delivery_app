@@ -8,15 +8,17 @@ jobs:
   build-apk:
     runs-on: ubuntu-22.04
     steps:
-      - name: Clean up corrupted git modules
+      - name: Force remove gitmodules tracking
         run: |
-          rm -f .gitmodules
-          git submodule deinit -f --all || true
+          git config --remove-section submodule.flutter || true
+          rm -rf .gitmodules || true
+          git rm -f .gitmodules || true
 
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: false
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Set up Java
