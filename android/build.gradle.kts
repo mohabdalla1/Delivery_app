@@ -1,6 +1,6 @@
 plugins {
-    // توحيد نسخة الـ Android Application والـ Library لتجنب تعارض الـ classpath
-    id("com.android.application") version "8.5.0" apply false
+    // تحديث النسخة لتطابق الإصدار الموجود على الـ classpath (9.1.0) لتجنب التعارض
+    id("com.android.application") version "9.1.0" apply false
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
 }
 
@@ -12,7 +12,6 @@ allprojects {
 }
 
 val rootProjectDir = rootProject.buildDir.absoluteFile.parentFile
-
 rootProject.extra["buildDir"] = "$rootProjectDir/build"
 
 subprojects {
