@@ -26,3 +26,7 @@ buildscript {
         classpath("com.google.gms:google-services:4.4.2")
     }
 }
+android {
+    ndkVersion = "26.1.10909125"
+    // باقي الإعدادات الموجودة لديك...
+}
