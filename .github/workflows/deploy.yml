@@ -8,6 +8,11 @@ jobs:
   build-apk:
     runs-on: ubuntu-22.04
     steps:
+      - name: Clean up corrupted git modules
+        run: |
+          rm -f .gitmodules
+          git submodule deinit -f --all || true
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
