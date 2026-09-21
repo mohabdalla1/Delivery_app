@@ -4,11 +4,11 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
     id("com.google.gms.google-services") // إضافة هذا السطر
 }
-
 android {
     namespace = "com.example.delivery_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "26.1.10909125" // <--- ضعه هنا تماماً
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
