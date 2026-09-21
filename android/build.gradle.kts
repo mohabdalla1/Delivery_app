@@ -1,6 +1,5 @@
 plugins {
-    // تحديث النسخة لتطابق الإصدار الموجود على الـ classpath (9.1.0) لتجنب التعارض
-    id("com.android.application") version "9.1.0" apply false
+    id("com.android.application") version "8.5.0" apply false
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
 }
 
