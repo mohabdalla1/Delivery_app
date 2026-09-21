@@ -20,3 +20,9 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
+buildscript {
+    dependencies {
+        // إضافة بلاجن جوجل سيرفيسز هنا لكي يتعرف عليه النظام
+        classpath("com.google.gms:google-services:4.4.2")
+    }
+}
