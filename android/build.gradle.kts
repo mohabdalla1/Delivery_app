@@ -1,29 +1,44 @@
 plugins {
-    id("com.android.application") version "8.5.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.22" apply false
+    id("com.android.application")
+    id("kotlin-android")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
+android {
+    namespace = "com.example.delivery_app"
+    compileSdk = flutter.compileSdkVersion.toInt()
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.delivery_app"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://-flutter.dev/deployment/android#reviewing-the-gradle-build-configuration
+        minSdk = flutter.minSdkVersion.toInt()
+        targetSdk = flutter.targetSdkVersion.toInt()
+        versionCode = flutter.versionCode()
+        versionName = flutter.versionName()
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 }
 
-val rootProjectDir = rootProject.buildDir.absoluteFile.parentFile
-rootProject.extra["buildDir"] = "$rootProjectDir/build"
-
-subprojects {
-    project.evaluationDependsOn(":app")
+flutter {
+    source = "../.."
 }
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
-}
-buildscript {
-    dependencies {
-        // إضافة بلاجن جوجل سيرفيسز هنا لكي يتعرف عليه النظام
-        classpath("com.google.gms:google-services:4.4.2")
-    }
-}
-
