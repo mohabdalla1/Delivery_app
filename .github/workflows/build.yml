@@ -1,14 +1,17 @@
-name: Build Android APK
+name: Build Flutter APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build-apk:
-    runs-on: ubuntu-22.04
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Java
@@ -16,25 +19,27 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
-          
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.2'
+          flutter-version: '3.x'
           channel: 'stable'
-          
-      - name: Configure Gradle repositories
+          cache: true
+
+      - name: Create local.properties automatically
         run: |
+          echo "flutter.sdk=$FLUTTER_ROOT" > local.properties
           echo "flutter.sdk=$FLUTTER_ROOT" > android/local.properties
-          
+
       - name: Install dependencies
         run: flutter pub get
-        
+
       - name: Build APK Release
         run: flutter build apk --release
-        
+
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
