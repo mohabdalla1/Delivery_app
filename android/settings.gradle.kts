@@ -7,7 +7,22 @@ pluginManagement {
         }
         properties.getProperty("flutter.sdk") ?: System.getenv("FLUTTER_ROOT")
     }
+    
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
 plugins {
